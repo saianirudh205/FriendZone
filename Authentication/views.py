@@ -58,8 +58,7 @@ def login_view(request):
         user = authenticate(request, email=username, password=password)
         print(user)
         if user is not None:
-            login(request, user)
-            return redirect('/')
-        else:
             return HttpResponse('YEAY')
+        else:
+            return Login(request,error="User name or Password didnt match")
     return render(request, 'login.html')
